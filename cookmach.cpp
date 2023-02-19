@@ -1,43 +1,40 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int even_mul(int a){
-  cout << "em";
-  return 2*a;
+bool is(int n){
+  int k = log(n) / log(2);
+  int sum =1 ;
+  for(int i=1; i<=k;i++) sum*=2;
+  if(sum == n) return true;
+  return false;
 }
 
-int even(int a){
-  cout << "e" ;
-  return a/2;
-}
-
-int odd(int a) {
-  cout << "o";
-  return (a-1)/2;
-}
 void solve(){
   int count =0;
   int n,k;
   cin >> n >> k;
-  if(n==k) {
-    cout << "0" << endl;
-    return ;
-  }
-while(n<k && n > 0){
-  if(n%2==0) {
-    if(k%n==0) {
-      n = even_mul(n);
-      count++;
+
+  while(!is(n)){
+    if(n==1) break;
+    if(n%2!=0) {
+      n = (n-1) / 2;
+      count ++;
+    }else{
+      n = n/2;
+      count ++;
     }
-    else {
-      n = even(n);
-      count++;
-    }
-  }else {
-    n = odd(n);
-    count++ ;
   }
-}
+
+  while(n>k){
+    n= n/2;
+    count++;
+    if(n==k) break;
+  }
+  while(n<k){
+    n= n*2;
+    count++;
+    if(n==k) break;
+  }
   cout << count << endl;
 }
 
