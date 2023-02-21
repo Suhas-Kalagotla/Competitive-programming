@@ -6,8 +6,8 @@ void solve(){
   int n;
   cin >> n >> a;
 /*
-  9 4 2 4 1 2 3 4
-  0 1 2 3 4 5 6 7
+  9 4 2 4 1 2 3 4 2 0 8
+  0 1 2 3 4 5 6 7 8 9 10
   1 1 2 3
   2 1 1 2
   3 2 1 1
@@ -15,9 +15,10 @@ void solve(){
   5 4 3 2
   6 5 4 3
   */
-  int j=0, i=1,count=0;
+  int count=0;
+  /*
   while(j!=n){
-    if(i==n) {
+    if(i==9 || i > n) {
       i=j+1;
       j++;
     }
@@ -27,6 +28,11 @@ void solve(){
       count++;
     }
     i++;
+  }*/
+  for(int i=0; i<n; i++){
+    for(int j=i+1; j<=i+9 && j<n;j++){
+      if(abs(a[i] - a[j]) == abs(i-j)) count++;
+    }
   }
   cout << count << endl;
 }
