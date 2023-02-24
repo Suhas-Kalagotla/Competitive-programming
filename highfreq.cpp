@@ -15,9 +15,9 @@ void solve(){
 
   int ans = freq[n-1];
 
-  if(ans == 0) ans = (freq[n]%2==0) ? freq[n] / 2 : (freq[n]+1) /2;
-
-  cout << ans <<endl;
+  int k = ceil((float) freq[n] /2 );
+  if(k>freq[n-1]) cout << k << endl;
+  else cout << ans << "" <<endl;
 }
 
 int main(){
