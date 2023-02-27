@@ -1,38 +1,27 @@
 #include <bits/stdc++.h>
 using namespace std;
-/*
-void check_missing(string &a,int &n){
-  int o=0, c=0;
-  for(int i=0; i<n;i++) {
-    if(a[i] == '(') o++;
-    else c++;
-  }
-  while(o>c){
-    c++;
-    a= a+')';
-    n++;
-  }
-  while(c>o){
-    o++;
-    n++;
-    a = a+'(';
-  }
-}
-*/
+
 void solve(){
   int n,ans=0;
-  string a;
+  string s;
   cin >> n;
-  cin >> a;
+  cin >> s;
 
-  //if(n%2!=0) check_missing(a,n);
+  int i=0, j= n-1 ;
 
-  string b = a ;
-  sort(a.begin() , a.end());
-
-  for(int i=0; i<n; i++){
-    if(a[i] != b[i]) ans++;
+  while(i <=j ){
+    while(s[i] != '(' && i<=j ){
+      i++;
+      ans++;
+    }
+    while(s[i] == '(' && s[j]!=')' && i<=j ){
+      j--;
+      ans++;
+    }
+    i++;
+    j--;
   }
+
   cout << ans << endl;
 }
 
