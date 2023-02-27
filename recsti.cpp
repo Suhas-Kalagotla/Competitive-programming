@@ -16,13 +16,15 @@ void solve(){
   unordered_map<int,int>::iterator i;
   int count =0;
   for(i = freq.begin(); i!=freq.end(); i++){
-    if(i->second%2!=0) count++;
+    if(i->second%2!=0) {
+      count++;
+      n++;
+    }
   }
-  n= n+count;
-  if(n <4) count += 4 -n;
-  if(n%4!=0) count += n%4; 
+  if(n%4!=0) count += 4-(n%4);
   cout << count << endl;
 }
+
 
 int main(){
   ll tc;
