@@ -2,17 +2,13 @@
 #define ll long long
 using namespace std;
 
-int prime(int n){
-  for(int i=2; i<n/2; i++){
-    if(n%i==0) return 0;
-  }
-  return 1;
-}
-
 int spf(int n){
-  for(int i=2;i<=n;i++){
-    if(n%i==0 && prime(i)) return i;
+  if(n%2==0) return 2;
+
+  for(int i=3;i*i<=n;i+=2){
+    if(n%i==0) return i;
   }
+  return n;
 }
 
 void solve(){
@@ -22,9 +18,10 @@ void solve(){
 
   while(x<y){
     if(x%2!=0) x += spf(x);
-    else x+=2;
+    else break;
     ans++;
   }
+  ans += abs((y-x+1)/2);
   cout <<ans <<endl;
 }
 

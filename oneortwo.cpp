@@ -2,34 +2,43 @@
 using namespace std;
 
 void solve(){
-  int x , y , t=1 ;
-  int ans=0; 
+  int x , y;
+  int ans=0;
   cin >> x >> y ;
-  while(x<=0 && y<=0){
 
-    if(t%2!=0){
-      if(x<=1 && y<=1) {
-        ans = 1;
-          break;}
-
-      if(x>=1 && y>=1) {
-        x--;
-        y--;
-      } else x-=2;
-    }else{
-      if(x<=1 && y<=1) {
-        ans = 0;
-        break;
-      }
-      if(x>=1 && y>=1) {
-        x--;
-        y--;
-      } else y-=2;
+  if(x==y){
+    if(x%2 != 0 ){
+      cout << "Chef\n";
+      return;
+    }else {
+      cout << "Chefina\n";
+      return ;
     }
   }
+  int diff = abs(x-y);
+  if(x>y && diff>=2){
+    cout << "Chef\n";
+    return;
+  }else if(diff>=2 && y>x){
+    cout << "Chefina\n";
+    return;
+  }
 
-  if(ans) cout << "Chafina\n";
-  else cout << "Chef\n";
+  if(x%2!=0 && x>y){
+    cout << "chefina\n";
+    return;
+  }
+  else if(x%2==0 && x>y){
+    cout << "Chef\n";
+    return;
+  }
+  else if(y%2==0 && y >x){
+    cout << "Chef\n";
+  }
+  else if(y%2!=0 && y>x){
+    cout << "Chefina\n";
+    return; 
+  }
 }
 
 int main(){
