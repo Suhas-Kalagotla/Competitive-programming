@@ -3,22 +3,18 @@
 using namespace std;
 
 void solve(){
-  int n;
+  ll n;
   cin >> n;
-  int a[n];
-  for(int i=0; i<n; i++) cin >> a[i];
-  int f=0,s=0;
-
-  sort(a,a+n);
-
-  for(int i=0; i<n; i++){
-    if(f<s) f+= a[i];
-    else s+= a[i];
+  ll a[n];
+  for(ll i=0; i<n; i++) cin >> a[i];
+  ll f=0,s=0,i=0,j=n-1;
+  
+  while(i<=j){
+    if(f<s) f+= a[i++];
+    else s+= a[j--];
   }
 
-  int ans = (f<s) ? s : f;
-
-  cout << ans << endl;
+  cout << max(f,s)<< endl;
 }
 int main(){
   ll tc;
