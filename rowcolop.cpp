@@ -4,7 +4,7 @@ using namespace std;
 int main(){
   int n , q;
   cin >> n >> q;
-  int a[n][n] ={0,0};
+  int row[n]={0} , column[n]={0};
   while(q--) {
     string s;
     cin >> s;
@@ -12,17 +12,16 @@ int main(){
     cin >> k >> v;
     char c=s[0];
     if(c=='R'){
-      for(int i=0; i<n;i++) a[k-1][i] += v;
+      row[k] += v;
     } else{
-      for(int i=0; i<n;i++) a[i][k-1] += v;
+      column[k] += v;
     }
   };
-  int max =0;
+  int mr=0,mc=0;
   for(int i=0; i<n; i++){
-    for(int j=0; j<n; j++){
-      if(a[i][j]>max) max=a[i][j];
-    }
+    mr = max(row[i],mr);
+    mc = max(column[i], mc);
   }
-  cout << max << endl;
+  cout << mr + mc << endl;
 
 }
